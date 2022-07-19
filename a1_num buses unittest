@@ -1,0 +1,79 @@
+import math
+import unittest
+
+def num_buses(n):
+    """ (int) -> int
+
+    Precondition: n >= 0
+
+    Return the minimum number of buses required to transport n people.
+    Each bus can hold 50 people.
+
+    >>> num_buses(0)
+    0
+    >>> num_buses(23)
+    1
+    >>> num_buses(50)
+    1
+    >>> num_buses(75)
+    2
+    >>> num_buses(100)
+    2
+    >>> num_buses(459)
+    10
+    
+    """
+
+    return math.ceil(n / 50)
+   
+class TestNumBuses(unittest.TestCase):
+    """ Test class for function a1.num_buses. """
+
+    # Add your test methods for a1.num_buses here.
+    def test_num_buses_case1(self):
+        """ Test num_buses with n = 0 """
+
+        actual = a1.num_buses(0)
+        expected = 0
+        self.assertEqual(actual, expected)
+
+    def test_num_buses_case2(self):
+        """ Test num_buses with 0 < n < 50 """
+
+        actual = a1.num_buses(23)
+        expected = 1
+        self.assertEqual(actual, expected)
+
+    def test_num_buses_case3(self):
+        """ Test num_buses with n = 50 """
+
+        actual = a1.num_buses(50)
+        expected = 1
+        self.assertEqual(actual, expected)
+
+    def test_num_buses_case4(self):
+        """ Test num_buses with 50 < n < 100 """
+
+        actual = a1.num_buses(75)
+        expected = 2
+        self.assertEqual(actual, expected)
+
+    def test_num_buses_case5(self):
+        """ Test num_buses with n = 100 """
+
+        actual = a1.num_buses(100)
+        expected = 2
+        self.assertEqual(actual, expected)
+
+    def test_num_buses_case6(self):
+        """ Test num_buses with n > 100 """
+
+        actual = a1.num_buses(459)
+        expected = 10
+        self.assertEqual(actual, expected)
+
+    
+if __name__ == '__main__':
+    unittest.main(exit=False)    
+    
+    
