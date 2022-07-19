@@ -1,0 +1,79 @@
+import unittest
+
+def stock_price_summary(price_changes):
+    """ (list of number) -> (number, number) tuple
+
+    price_changes contains a list of stock price changes. Return a 2-item
+    tuple where the first item is the sum of the gains in price_changes and
+    the second is the sum of the losses in price_changes.
+
+    >>> stock_price_summary([])
+    (0, 0)
+    >>> stock_price_summary([.06, .04, .11, .13])
+    (0.34, 0)
+    >>> stock_price_summary([-0.05, -0.18, -0.09, -0.1, -.34])
+    (0, -0.76)
+    >>> stock_price_summary([0.01, 0.03, -0.02, -0.14, 0, 0, 0.10, -0.01])
+    (0.14, -0.17)
+    """
+
+    gain = 0
+    loss = 0
+
+    for item in price_changes:
+        if item > 0:
+            gain = gain + item
+        elif item < 0:
+            loss = loss + item
+
+    return (gain, loss)
+        
+class TestStockPriceSummary(unittest.TestCase):
+    """ Test class for function a1.stock_price_summary. """
+
+    # Add your test methods for a1.stock_price_summary here.
+    def test_stock_price_summary_case1(self):
+        """ Test stock_price_summary with price_changes is an empty list """
+        
+        actual = a1.stock_price_summary([])
+        expected = (0, 0)
+        self.assertEqual(actual, expected)
+
+    def test_stock_price_summary_case2(self):
+        """ Test stock_price_summary with price_changes is a 1-item list
+        of a positive item.
+        """
+        
+        actual = a1.stock_price_summary([.13])
+        expected = (0.13, 0)
+        self.assertEqual(actual, expected)
+
+    def test_stock_price_summary_case3(self):
+        """ Test stock_price_summary with price_changes is a 1-item list
+        of a negative item.
+        """
+        
+        actual = a1.stock_price_summary([-.34])
+        expected = (0, -0.34)
+        self.assertEqual(actual, expected)
+
+    def test_stock_price_summary_case4(self):
+        """ Test stock_price_summary with price_changes is a 1-item list
+        which is 0.
+        """
+        
+        actual = a1.stock_price_summary([0])
+        expected = (0, 0)
+        self.assertEqual(actual, expected)
+
+    def test_stock_price_summary_case5(self):
+        """ Test stock_price_summary with price_changes have a positive item,
+        a negative item, and a o.
+        """
+        actual = a1.stock_price_summary([0.01, 0.03, -0.02, -0.14, 0, 0, 0.10, -0.01])
+        expected = (0.14, -0.17)
+        self.assertEqual(actual, expected)
+
+
+if __name__ == '__main__':
+    unittest.main(exit=False)
